@@ -1,27 +1,27 @@
 <% require 'date' %>
 
 <h2>Lootodo</h2>
-<h3><%= Date.today.strftime("%A, %B %d") %></h3>
+<h4><%= Date.today.strftime("%A, %B %d") %></h4>
 <br>
 <div class="row">
   <div class="col-md-6">
-    <h4>TODOS</h4>
+    <p>TODOS</p>
     <%= form_with scope: :todo, url: todos_path do |f| %>
-      <%= f.text_field :item, placeholder: "eg. Buy milk" %><br>
+      <%= f.text_field :item, placeholder: "Add new task" %><br>
       <br>
-      <%= f.submit "Add", class: "btn btn-primary" %>
+      <%= f.submit "+", class: "btn btn-primary" %>
     <% end %>
-    <ol>
+    <ul>
       <% @todos.each do |todo| %>
-        <h3>
-          <li id="list">
-            <%= todo.item %>
+          <h3>
+            <li id="list">
+              <%= todo.item %> <small>🎉 50XP</small>
             <small>
-              <%= link_to '(X)', todo,  method: :delete %>
+              <%= link_to 'x', todo,  method: :delete %>
             </small>
-          </li>
-        </h3>
+            </li>
+          </h3>
       <% end %>
-    </ol>
+    </ul>
   </div>
 </div>
